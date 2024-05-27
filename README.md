@@ -1,4 +1,6 @@
-![BannerImage](https://github.com/soraiathegirleffect/Wall-E-CodeForAll-FinalProject/blob/main/Wall-E.jpg)
+<p align="center">
+  <img src="https://github.com/soraiathegirleffect/Wall-E-CodeForAll-FinalProject/raw/main/Wall-E.jpg" alt="BannerImage">
+</p>
 <h1 align="center">Wall-E</h1>
 <p align="center">web application aims to provide detailed information about various fruits and their nutritional values
 </p>
