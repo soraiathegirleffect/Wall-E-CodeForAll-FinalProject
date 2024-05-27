@@ -4,6 +4,7 @@ export { sections }
 import { lobby } from "./views/lobby.js"
 import { learnPlanets } from "./views/learnPlanets.js"
 import { teachPlanets } from "./views/teachPlanets.js"
+import { cleanPlanets } from "./views/cleanPlanets.js"
 
 
 const sections = [
@@ -13,6 +14,7 @@ const sections = [
         walle: "wallEWaiting",
         learnPlanetsBtn: "Learn about Planets",
         teachPlanetsBtn: "Teach about Planets",
+        cleanPlanetsBtn: "Clean Planets",
         text: "Hello I'm Wall-E, bi-po-bi, /n bibibibi i'm learning new earth information, select the topic:"
     },
     {
@@ -27,7 +29,13 @@ const sections = [
         background: "space2",
         walle: "wallELearning",
         learnPlanetsBtn: "Learn about Planets",
-        text: "Teach me a Planet by filling the form:"
+        text: "Teach me a Planet from the list:"
+    },
+    {
+        title: "cleanPlanets",
+        background: "space1",
+        walle: "wallECleaning",
+        text: "Let's schedule a Planet to clean:"
     }
 ];
 
@@ -36,6 +44,7 @@ const routes = [
     { url:"/", page: lobby },
     { url:"/teachplanets", page: teachPlanets },
     { url:"/learnplanets", page: learnPlanets },
+    { url:"/cleanplanets", page: cleanPlanets }
     //{ url:"/error", page: error }
 ]; // if any of the above are not correctly defined the whole page wont load
 

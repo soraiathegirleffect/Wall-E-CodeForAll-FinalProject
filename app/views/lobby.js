@@ -9,7 +9,7 @@ function lobby(root) {
 function loadSectionView(root, data){
 
     const background = document.createElement("img");
-    background.src = `../assets/${data.background}.jpg`;
+    background.src = `../assets/${data.background}.png`;
     background.alt = "Space Background";
 
     const title = document.createElement("h1");
@@ -40,10 +40,20 @@ function loadSectionView(root, data){
         event.preventDefault();
     });
 
+    const cleanPlanetsButton = document.createElement("button");
+    cleanPlanetsButton.innerText = `${data.cleanPlanetsBtn}`;
+    cleanPlanetsButton.classList.add("cleanPlanetsButton");
+
+    cleanPlanetsButton.addEventListener("click", event => {
+        goto("/cleanplanets");
+        event.preventDefault();
+    });
+
     root.appendChild(background);
     root.appendChild(title);
     root.appendChild(img);
     root.appendChild(speech);
     root.appendChild(learnPlanetsButton);
     root.appendChild(teachPlanetsButton);
+    root.appendChild(cleanPlanetsButton);
 }
