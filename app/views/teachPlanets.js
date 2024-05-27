@@ -1,18 +1,17 @@
-export { learnFruits };
+export { teachPlanets };
 
 import { sections } from "../main.js"
 import { goto } from "../main.js"
 
-
-function learnFruits(root) {
-    loadSectionView(root, sections.find(section => section.title === "learnFruits"));
+function teachPlanets(root) {
+    loadSectionView(root, sections.find(section => section.title === "teachPlanets"));
 }
 
 function loadSectionView(root, data){
 
     const background = document.createElement("img");
-    background.src = `../assets/${data.background}.jpg`;
-    background.alt = "Space fruits Background";
+    background.src = `../assets/${data.background}.png`;
+    background.alt = "Space Planets Background";
 
     const title = document.createElement("h1");
     title.innerText = `${data.title} page`;
@@ -34,12 +33,12 @@ function loadSectionView(root, data){
         event.preventDefault();
     });
 
-    const teachFruitsButton = document.createElement("button");
-    teachFruitsButton.innerText = `${data.teachFruitsBtn}`;
-    teachFruitsButton.classList.add("teachFruitsButton");
+    const learnPlanetsButton = document.createElement("button");
+    learnPlanetsButton.innerText = `${data.learnPlanetsBtn}`;
+    learnPlanetsButton.classList.add("learnPlanetsButton");
 
-    teachFruitsButton.addEventListener("click", event => {
-        goto("/teachfruits");
+    learnPlanetsButton.addEventListener("click", event => {
+        goto("/learnplanets");
         event.preventDefault();
     });
 
@@ -48,6 +47,6 @@ function loadSectionView(root, data){
     root.appendChild(img);
     root.appendChild(speech);
     root.appendChild(lobbyButton);
-    root.appendChild(teachFruitsButton)
+    root.appendChild(learnPlanetsButton)
 }
 

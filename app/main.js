@@ -2,40 +2,40 @@ export { goto }
 export { sections }
 
 import { lobby } from "./views/lobby.js"
-import { learnFruits } from "./views/learnFruits.js"
-import { teachFruits } from "./views/teachFruits.js"
+import { learnPlanets } from "./views/learnPlanets.js"
+import { teachPlanets } from "./views/teachPlanets.js"
 
 
 const sections = [
     {
         title: "lobby",
-        background: "space",
+        background: "space1",
         walle: "wallEWaiting",
-        learnFruitsBtn: "Learn about Fruits",
-        teachFruitsBtn: "Teach about Fruits",
+        learnPlanetsBtn: "Learn about Planets",
+        teachPlanetsBtn: "Teach about Planets",
         text: "Hello I'm Wall-E, bi-po-bi, /n bibibibi i'm learning new earth information, select the topic:"
     },
     {
-        title: "learnFruits",
-        background: "spaceFruits",
+        title: "learnPlanets",
+        background: "space2",
         walle: "wallEHappy",
-        teachFruitsBtn: "Teach about Fruits",
-        text: "Let me show you the fruits I know:"
+        teachPlanetsBtn: "Teach about Planets",
+        text: "Let me show you the Planets I know:"
     },
     {
-        title: "teachFruits",
-        background: "spaceFruits",
-        walle: "wallEHappy",
-        learnFruitsBtn: "Learn about Fruits",
-        text: "Teach me a fruit by filling the form:"
+        title: "teachPlanets",
+        background: "space2",
+        walle: "wallELearning",
+        learnPlanetsBtn: "Learn about Planets",
+        text: "Teach me a Planet by filling the form:"
     }
 ];
 
 //maps url to render functions
 const routes = [
     { url:"/", page: lobby },
-    { url:"/teachfruits", page: teachFruits },
-    { url:"/learnfruits", page: learnFruits },
+    { url:"/teachplanets", page: teachPlanets },
+    { url:"/learnplanets", page: learnPlanets },
     //{ url:"/error", page: error }
 ]; // if any of the above are not correctly defined the whole page wont load
 

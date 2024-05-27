@@ -22,21 +22,21 @@ function loadSectionView(root, data){
     const speech = document.createElement("p");
     speech.innerText = `${data.text}`;
 
-    const learnFruitsButton = document.createElement("button");
-    learnFruitsButton.innerText = `${data.learnFruitsBtn}`;
-    learnFruitsButton.classList.add("learnFruitsButton");
+    const learnPlanetsButton = document.createElement("button");
+    learnPlanetsButton.innerText = `${data.learnPlanetsBtn}`;
+    learnPlanetsButton.classList.add("learnPlanetsButton");
 
-    learnFruitsButton.addEventListener("click", event => {
-        goto("/learnfruits");
+    learnPlanetsButton.addEventListener("click", event => {
+        goto("/learnplanets");
         event.preventDefault();
     });
 
-    const teachFruitsButton = document.createElement("button");
-    teachFruitsButton.innerText = `${data.teachFruitsBtn}`;
-    teachFruitsButton.classList.add("teachFruitsButton");
+    const teachPlanetsButton = document.createElement("button");
+    teachPlanetsButton.innerText = `${data.teachPlanetsBtn}`;
+    teachPlanetsButton.classList.add("teachPlanetsButton");
 
-    teachFruitsButton.addEventListener("click", event => {
-        goto("/teachfruits");
+    teachPlanetsButton.addEventListener("click", event => {
+        goto("/teachplanets");
         event.preventDefault();
     });
 
@@ -44,6 +44,6 @@ function loadSectionView(root, data){
     root.appendChild(title);
     root.appendChild(img);
     root.appendChild(speech);
-    root.appendChild(learnFruitsButton);
-    root.appendChild(teachFruitsButton);
+    root.appendChild(learnPlanetsButton);
+    root.appendChild(teachPlanetsButton);
 }
