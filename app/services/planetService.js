@@ -15,21 +15,46 @@ async function planetService(){
     const planetData = await response.json();
 
     return planetData;
-    
 }
 
-function nameService(){
-planetService()
-.then(planetData => {
-    var results = planetData.results;
-    results.forEach(result =>  console.log(result.name)); })
-};
+
+async function mapservice(){
+    let mapDataObject = {};
+
+    planetService()
+      .then(planetData => {
+        const results = planetData.results;
+        const mappedData = results.map(result => {
+          return {
+            name: result.name,
+            climate: result.climate,
+            terrain: result.terrain,
+            population: result.population,
+            diameter : result.diameter
+          }
+        });
+
+        mapDataObject = { mappedData };
+
+        console.log(mapDataObject);
+      });
+  }
+
+  mapservice();
 
 
-nameService();
 
 
 
 
 
 
+
+
+
+
+//function nameService(){
+//planetService()
+//.then(planetData => {
+//    var results = planetData.results;
+//    results.forEach(result =>  result.name); })};
