@@ -2,6 +2,7 @@ export { teachPlanets };
 
 import { sections } from "../main.js"
 import { goto } from "../main.js"
+import { planetData } from "../services/planetService.js"
 
 function teachPlanets(root) {
     loadSectionView(root, sections.find(section => section.title === "teachPlanets"));
@@ -23,6 +24,19 @@ function loadSectionView(root, data){
 
     const speech = document.createElement("p");
     speech.innerText = `${data.text}`;
+
+    const planetSelect = document.createElement("select")
+    const options = ["Planets", "Tatooine", "Alderaan", "Yavin IV", "Hoth", "Dagobah", "Bespin", "Endor", "Naboo", "Coruscant", "Kamino"]
+
+    options.forEach(optionText => {
+        const option = document.createElement("option");
+        option.value = optionText; // Set the value attribute
+        option.textContent = optionText; // Set the text content
+        planetSelect.appendChild(option); // Append the option to the select element
+    
+    });
+
+    planetSelect.addEventListener("change", event => planetClicked(event.target.value));
 
     const lobbyButton = document.createElement("button");
     lobbyButton.innerText = "< Lobby";
@@ -47,6 +61,14 @@ function loadSectionView(root, data){
     root.appendChild(img);
     root.appendChild(speech);
     root.appendChild(lobbyButton);
-    root.appendChild(learnPlanetsButton)
+    root.appendChild(learnPlanetsButton);
+    
+    root.appendChild(planetSelect);
+
+    function planetClicked(selectedPlanet) {
+        console.log("Selected planet:", selectedPlanet);
+        //const selectedPanetJSON = JSON.stringify(selectedPlanet);
+        planetData(selectedPlanet);
+    }
 }
 

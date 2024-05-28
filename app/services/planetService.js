@@ -1,4 +1,6 @@
 export {planetService};
+export {mapService};
+export {planetData};
 
 const API_PLANETS1 = "https://swapi.dev/api/planets/?page=1"
 const API_PLANETS2 = "https://swapi.dev/api/planets/?page=2"
@@ -18,29 +20,38 @@ async function planetService(){
 }
 
 
-async function mapservice(){
+async function mapService(){
     let mapDataObject = {};
 
-    planetService()
-      .then(planetData => {
+    //planetService()
+    const planetData = await planetService();
+      //.then(planetData => {
         const results = planetData.results;
         const mappedData = results.map(result => {
           return {
-            name: result.name,
-            climate: result.climate,
-            terrain: result.terrain,
-            population: result.population,
-            diameter : result.diameter
+            Name: result.name,
+            Climate: result.climate,
+            Terrain: result.terrain,
+            Population: result.population,
+            Diameter : result.diameter
           }
         });
 
-        mapDataObject = { mappedData };
-
-        console.log(mapDataObject);
-      });
+        return mappedData;
   }
 
-  mapservice();
+  async function planetData(name){
+    const planets = await mapService();
+    const planet = planets.find(item => item.Name === name);
+
+    if (planet){
+        const planetJSON = JSON.stringify(planet);
+
+        console.log(planetJSON)
+        return planetJSON;
+    }
+
+  }
 
 
 
