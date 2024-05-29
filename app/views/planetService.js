@@ -21,11 +21,8 @@ async function planetService(){
 
 
 async function planetInfoService(){
-    let mapDataObject = {};
 
-    //planetService()
     const planetData = await planetService();
-      //.then(planetData => {
         const results = planetData.results;
         const mappedData = results.map(result => {
           return {

@@ -34,9 +34,44 @@ function loadSectionView(root, data){
     });
 
 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     root.appendChild(background);
     root.appendChild(title);
     root.appendChild(img);
     root.appendChild(speech);
     root.appendChild(lobbyButton);
+
+
+
+
+
+    // Create a function to add a form group
+    function createFormGroup(labelText, inputElement) {
+        const formGroup = document.createElement('div');
+
+        const label = document.createElement('label');
+        label.textContent = labelText;
+
+        formGroup.appendChild(label);
+        formGroup.appendChild(inputElement);
+        return formGroup;
+    }
 }

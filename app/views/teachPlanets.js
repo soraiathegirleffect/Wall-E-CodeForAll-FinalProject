@@ -2,7 +2,7 @@ export { teachPlanets };
 
 import { sections } from "../main.js"
 import { goto } from "../main.js"
-import { planetData } from "../services/planetService.js"
+import { planetData } from "./planetService.js"
 
 function teachPlanets(root) {
     loadSectionView(root, sections.find(section => section.title === "teachPlanets"));
@@ -33,7 +33,6 @@ function loadSectionView(root, data){
         option.value = optionText; // Set the value attribute
         option.textContent = optionText; // Set the text content
         planetSelect.appendChild(option); // Append the option to the select element
-    
     });
 
     planetSelect.addEventListener("change", event => planetClicked(event.target.value));

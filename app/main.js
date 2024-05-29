@@ -6,7 +6,7 @@ import { learnPlanets } from "./views/learnPlanets.js"
 import { teachPlanets } from "./views/teachPlanets.js"
 import { cleanPlanets } from "./views/cleanPlanets.js"
 
-import { planetService } from "./services/planetService.js"
+import { planetService } from "./views/planetService.js"
 
 
 const sections = [
