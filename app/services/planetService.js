@@ -1,6 +1,6 @@
 export {planetService};
 export {planetInfoService};
-export {planetData};
+export {planetDataService};
 
 const API_PLANETS1 = "https://swapi.dev/api/planets/?page=1"
 const API_PLANETS2 = "https://swapi.dev/api/planets/?page=2"
@@ -37,18 +37,21 @@ async function planetInfoService(){
         return mappedData;
   }
 
-  async function planetData(name){
+  async function planetDataService(name){
     const planets = await planetInfoService();
     const planet = planets.find(item => item.Name === name);
 
     if (planet){
         const planetJSON = JSON.stringify(planet);
 
-        console.log(planetJSON)
-        return planetJSON;
+        console.log("Info of planet:", planetJSON);        
+
+        return planetJSON; //this is the data we want to storeeeeee
     }
 
   }
+
+  
 
 
 

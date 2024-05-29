@@ -24,6 +24,7 @@ public class RestPlanetController {
         this.planetService=planetService;
     }
 
+
     @RequestMapping(method = RequestMethod.GET, path ={"/",""})
     public ResponseEntity<List<Planet>> listPlanets() {
         List<Planet> planets = planetService.list();

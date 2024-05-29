@@ -12,7 +12,7 @@ public class PlanetServiceImpl implements PlanetService {
     private static final List<Planet> planets = new ArrayList<>();
 
 
-    @Override
+    @Override //retrieve a specific planet wall-E learned
     public Planet get(String name) {
         for (Planet planet : planets) {
             if (planet.getName().equals(name)) {
@@ -21,15 +21,16 @@ public class PlanetServiceImpl implements PlanetService {
         }
         return null;
     }
-    @Override
+    @Override //retrieve the full planets learned list
     public List<Planet> list() {
         return new ArrayList<>(planets);
     }
 
-    @Override
+    @Override //save in wall-E memory the planets he learned //////////////////
     public void savePlanet(Planet planet) {
         if (!planets.contains(planet)) {
             planets.add(planet);
+            console.log("saved yay");
         }
     }
 }
