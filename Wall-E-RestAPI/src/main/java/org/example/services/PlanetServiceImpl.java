@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class PlanetServiceImpl implements PlanetService {
 
-    private static final List<Planet> planets = new ArrayList<>();
+    private static List<Planet> planets = new ArrayList<>();
 
 
     @Override //retrieve a specific planet wall-E learned
