@@ -21,7 +21,6 @@ public class PlanetServiceImpl implements PlanetService {
         }
         return null;
     }
-
     @Override
     public List<Planet> list() {
         return new ArrayList<>(planets);

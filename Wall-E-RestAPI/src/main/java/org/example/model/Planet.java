@@ -1,12 +1,15 @@
 package org.example.model;
 
+import org.springframework.lang.NonNull;
+
 public class Planet {
+
 
 private String name;
 private String climate;
 private Double diameter;
 private Double population;
-private String Terrain;
+private String terrain;
 
     public String getName() {
         return name;
@@ -41,11 +44,11 @@ private String Terrain;
     }
 
     public String getTerrain() {
-        return Terrain;
+        return this.terrain;
     }
 
     public void setTerrain(String terrain) {
-        Terrain = terrain;
+        this.terrain= terrain;
     }
 }
 
