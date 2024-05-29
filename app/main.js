@@ -1,0 +1,81 @@
+export { goto }
+export { sections }
+
+import { lobby } from "./views/lobby.js"
+import { learnPlanets } from "./views/learnPlanets.js"
+import { teachPlanets } from "./views/teachPlanets.js"
+import { cleanPlanets } from "./views/cleanPlanets.js"
+
+import { planetService } from "./views/planetService.js"
+
+
+const sections = [
+    {
+        title: "lobby",
+        background: "space1",
+        walle: "wallEWaiting",
+        learnPlanetsBtn: "Learn about Planets",
+        teachPlanetsBtn: "Teach about Planets",
+        cleanPlanetsBtn: "Clean Planets",
+        text: "Hello I'm Wall-E, bi-po-bi, /n bibibibi i'm learning new earth information, select the topic:"
+    },
+    {
+        title: "learnPlanets",
+        background: "space2",
+        walle: "wallEHappy",
+        teachPlanetsBtn: "Teach about Planets",
+        text: "Let me show you the Planets I know:"
+    },
+    {
+        title: "teachPlanets",
+        background: "space2",
+        walle: "wallELearning",
+        learnPlanetsBtn: "Learn about Planets",
+        text: "Teach me a Planet from the list:"
+    },
+    {
+        title: "cleanPlanets",
+        background: "space1",
+        walle: "wallECleaning",
+        text: "Let's schedule a Planet to clean:"
+    }
+];
+
+//maps url to render functions
+const routes = [
+    { url:"/", page: lobby },
+    { url:"/teachplanets", page: teachPlanets },
+    { url:"/learnplanets", page: learnPlanets },
+    { url:"/cleanplanets", page: cleanPlanets }
+    //{ url:"/error", page: error }
+]; // if any of the above are not correctly defined the whole page wont load
+
+render();
+planetService()
+//goto(document.location.pathname); // here we have defensive programming so we changed here instead of render
+window.addEventListener('popstate',render);
+
+function goto(url){
+
+    const route = routes.find(element => element.url === url);
+    
+    if(!route) {
+        goto("/"); //future should go to /error
+        return;
+    }
+
+    window.history.pushState("","",url); //missing preventDefault
+    render();
+}
+
+function render() {
+    const currentUrl = document.location.pathname;
+    const route = routes.find( element => element.url === currentUrl);
+
+    const root = document.getElementById("container");/////////////////root container
+    root.innerHTML = "";
+    route.page(root)
+}
+
+
+

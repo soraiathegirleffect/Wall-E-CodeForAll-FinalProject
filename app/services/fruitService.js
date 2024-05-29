@@ -10,4 +10,3 @@ async function getFruit(fruit) {
   }
 
   return response.json();
-}
