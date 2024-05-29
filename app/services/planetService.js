@@ -1,5 +1,5 @@
 export {planetService};
-export {mapService};
+export {planetInfoService};
 export {planetData};
 
 const API_PLANETS1 = "https://swapi.dev/api/planets/?page=1"
@@ -20,7 +20,7 @@ async function planetService(){
 }
 
 
-async function mapService(){
+async function planetInfoService(){
     let mapDataObject = {};
 
     //planetService()
@@ -41,7 +41,7 @@ async function mapService(){
   }
 
   async function planetData(name){
-    const planets = await mapService();
+    const planets = await planetInfoService();
     const planet = planets.find(item => item.Name === name);
 
     if (planet){
