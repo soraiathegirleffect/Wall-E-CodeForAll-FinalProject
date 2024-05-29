@@ -56,11 +56,6 @@ async function planetInfoService(){
 
 
 
-
-
-
-
-
 //function nameService(){
 //planetService()
 //.then(planetData => {

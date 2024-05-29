@@ -5,8 +5,7 @@ import { lobby } from "./views/lobby.js"
 import { learnPlanets } from "./views/learnPlanets.js"
 import { teachPlanets } from "./views/teachPlanets.js"
 import { cleanPlanets } from "./views/cleanPlanets.js"
-
-import { planetService } from "./views/planetService.js"
+import { planetService } from "./services/planetService.js"
 
 
 const sections = [
@@ -50,9 +49,9 @@ const routes = [
     //{ url:"/error", page: error }
 ]; // if any of the above are not correctly defined the whole page wont load
 
-render();
+
 planetService()
-//goto(document.location.pathname); // here we have defensive programming so we changed here instead of render
+goto(document.location.pathname); // here we have defensive programming so we changed here instead of render
 window.addEventListener('popstate',render);
 
 function goto(url){
