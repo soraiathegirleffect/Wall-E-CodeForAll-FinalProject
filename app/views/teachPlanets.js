@@ -64,16 +64,7 @@ function loadSectionView(root, data){
     
     root.appendChild(planetSelect);
 
-    //function planetClicked(selectedPlanet) {
-        //console.log("Selected planet:", selectedPlanet);
-        //const selectedPanetJSON = JSON.stringify(selectedPlanet);
-
-
-      //  return planetDataService(selectedPlanet); //already a string
-
-        //console.log("Info is showing wierd json :", planetsData);
-        //return sendDataToBackend(planetsData);
-    //}
+    
 
 
 
