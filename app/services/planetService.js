@@ -73,12 +73,6 @@ function planetDataService(name){
 
 
 
-  
-
-  
-
-
-
 
 //function nameService(){
 //planetService()

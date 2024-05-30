@@ -27,12 +27,12 @@ public class RestPlanetController {
 
 
 
-    @PostMapping
-    //("/api/planets")
-    public ResponseEntity<String> receiveData(@RequestBody Planet planet) {
+    @RequestMapping(method = RequestMethod.GET, path = ("/api/planets"))
+    public ResponseEntity<String> receiveData(@ModelAttribute("planet") Planet planet) {
         
+        Planet savedPlanet = planetService.savePlanets(planet);
         // Call the service method to save the received planets
-        planetService.savePlanets(planet);
+        //planetService.savePlanets(planet);
         return ResponseEntity.ok("Data received successfully");
     }
 
@@ -40,9 +40,6 @@ public class RestPlanetController {
     public List<Planet> getAllPlanets() {
         return planetService.getAllPlanets();
     }
-
-
-
 
 
 
