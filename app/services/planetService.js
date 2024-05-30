@@ -68,6 +68,7 @@ function planetDataService(name){
 
   /////////////////////////////  storing in json  
   // Function to fetch data from JSON file
+  
   let planetData = [{
     "Name": "Earth",
     "Climate": "Terrestrial",
