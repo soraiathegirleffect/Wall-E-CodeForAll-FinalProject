@@ -11,50 +11,71 @@ const API_PLANETS6 = "https://swapi.dev/api/planets/?page=6"
 //const result = JSON.parse(json);
 //result.results.push(...json.results);
 
-async function planetService(){
-    const response = await fetch(`${API_PLANETS1}`);
-
-    const planetData = await response.json();
-
-    return planetData;
+function planetService(){
+    return fetch(`${API_PLANETS1}`)
+    .then(response => {
+      return response.json()
+    })
+    .then(planetData => {return planetData});
 }
 
 
-async function planetInfoService(){
+function planetInfoService(){
 
-    const planetData = await planetService();
-        const results = planetData.results;
-        const mappedData = results.map(result => {
-          return {
-            Name: result.name,
-            Climate: result.climate,
-            Terrain: result.terrain,
-            Population: result.population,
-            Diameter : result.diameter
-          }
-        });
-
-        return mappedData;
+  return planetService()
+    .then(planetData => {
+      const results = planetData.results;
+      const mappedData = results.map(result => {
+        return {
+          Name: result.name,
+          Climate: result.climate,
+          Terrain: result.terrain,
+          Population: result.population,
+          Diameter: result.diameter
+        };
+      });
+      return mappedData;
+    })
   }
 
-  async function planetDataService(name){
-    const planets = await planetInfoService();
+function planetDataService(name){
+
+  return planetInfoService()
+  .then(planets => {
     const planet = planets.find(item => item.Name === name);
-
-    if (planet){
-        const planetJSON = JSON.stringify(planet);
-
-        console.log("Info of planet:", planetJSON);        
-
-        return planetJSON; //this is the data we want to storeeeeee
-    }
-
+    const planetJSON = JSON.stringify(planet);
+    console.log("Info of planet:", planetJSON);
+    //return planetJSON // This is the data we want to store
+    return sendDataToBackend(planetJSON);}
+  )
   }
+
+  const sendDataToBackend = (data) => {
+    return fetch('/api/planets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: data,
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // console.log(responseData); // Success message from backend Return the JSON data if the request is successful
+      } else {
+        throw new Error('Failed to send data to backend');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      throw error; // Propagate the error to the caller
+    });
+  };
+
+
 
   
 
-
-
+  
 
 
 

@@ -25,6 +25,28 @@ public class RestPlanetController {
     }
 
 
+
+
+    @PostMapping
+    //("/api/planets")
+    public ResponseEntity<String> receiveData(@RequestBody Planet planet) {
+        
+        // Call the service method to save the received planets
+        planetService.savePlanets(planet);
+        return ResponseEntity.ok("Data received successfully");
+    }
+
+    @GetMapping
+    public List<Planet> getAllPlanets() {
+        return planetService.getAllPlanets();
+    }
+
+
+
+
+
+
+
     @RequestMapping(method = RequestMethod.GET, path ={"/",""})
     public ResponseEntity<List<Planet>> listPlanets() {
         List<Planet> planets = planetService.list();

@@ -9,7 +9,15 @@ import java.util.List;
 @Service
 public class PlanetServiceImpl implements PlanetService {
 
-    private static List<Planet> planets = new ArrayList<>();
+    private final PlanetRepository planetRepository;
+
+    @Autowired
+    public PlanetService(PlanetRepository planetRepository) {
+        this.planetRepository = planetRepository;
+    }
+
+
+    private final List<Planet> planets = new ArrayList<>();
 
 
     @Override //retrieve a specific planet wall-E learned
@@ -28,9 +36,25 @@ public class PlanetServiceImpl implements PlanetService {
 
     @Override //save in wall-E memory the planets he learned //////////////////
     public void savePlanet(Planet planet) {
-        if (!planets.contains(planet)) {
+        if (!existsByName(planet.getName())) {
             planets.add(planet);
-            console.log("saved yay");
+            System.out.println("Planet saved: " + planet.getName());
+        } else {
+            System.out.println("Planet already exists: " + planet.getName());
         }
     }
+
+    public List<Planet> getAllPlanets() {
+        return planetRepository.findAll();
+        //return new ArrayList<>(planets);
+    }
+
+    public boolean existsByName(String name) {
+        return planets.stream().anyMatch(planet -> planet.getName().equalsIgnoreCase(name));
+    }
+        
+        
+        //if (!planets.contains(planet)) {
+        //    planets.add(planet);
+        //    console.log("saved yay");
 }

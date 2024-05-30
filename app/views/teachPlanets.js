@@ -35,7 +35,7 @@ function loadSectionView(root, data){
         planetSelect.appendChild(option); // Append the option to the select element
     });
 
-    planetSelect.addEventListener("change", event => planetClicked(event.target.value));
+    planetSelect.addEventListener("change", event => planetDataService(event.target.value));
 
     const lobbyButton = document.createElement("button");
     lobbyButton.innerText = "< Lobby";
@@ -64,10 +64,24 @@ function loadSectionView(root, data){
     
     root.appendChild(planetSelect);
 
-    function planetClicked(selectedPlanet) {
-        console.log("Selected planet:", selectedPlanet);
+    //function planetClicked(selectedPlanet) {
+        //console.log("Selected planet:", selectedPlanet);
         //const selectedPanetJSON = JSON.stringify(selectedPlanet);
-        planetDataService(selectedPlanet); 
-    }
+
+
+      //  return planetDataService(selectedPlanet); //already a string
+
+        //console.log("Info is showing wierd json :", planetsData);
+        //return sendDataToBackend(planetsData);
+    //}
+
+
+
+
+
+
+    
+
+
 }
 
