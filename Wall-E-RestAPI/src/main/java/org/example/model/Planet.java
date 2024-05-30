@@ -1,6 +1,5 @@
 package org.example.model;
 
-import org.springframework.lang.NonNull;
 
 public class Planet {
 
@@ -10,6 +9,15 @@ private String climate;
 private Double diameter;
 private Double population;
 private String terrain;
+
+    public Planet(String name, String climate, Double diameter, Double population, String terrain) {
+        this.name = name;
+        this.climate = climate;
+        this.diameter = diameter;
+        this.population = population;
+        this.terrain = terrain;
+    }
+
 
     public String getName() {
         return name;

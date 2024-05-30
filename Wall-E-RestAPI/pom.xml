@@ -7,6 +7,8 @@
     <groupId>org.example</groupId>
     <artifactId>Wall-E-RestAPI</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>WallE</name>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -65,13 +67,53 @@
             <version>2.1.1</version>
         </dependency>
 
+
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version></version>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.8.0</version>
         </dependency>
 
 
     </dependencies>
+
+    <build>
+        <finalName>JavaBank</finalName>
+        <!-- a compiler plugin which indicates the version of Java used -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+
+            <!-- Tomcat's plugin -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:9001/manager/text</url>
+                    <server>tomcat</server>
+                    <path>/Walle</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
