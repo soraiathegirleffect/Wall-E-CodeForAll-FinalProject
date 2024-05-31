@@ -10,20 +10,30 @@ function learnPlanets(root) {
 
 function loadSectionView(root, data){
 
-    const background = document.createElement("img");
-    background.src = `../assets/${data.background}.png`;
-    background.alt = "Space Planets Background";
+    //const background = document.createElement("img");
+    //background.src = `../assets/${data.background}.png`;
+    //background.alt = "Space Planets Background";
 
     const title = document.createElement("h1");
     title.innerText = `${data.title} page`;
 
+    const centerCont = document.createElement("div");
+    centerCont.classList.add("center-container");
 
     const img = document.createElement("img");
+    img.classList.add("wall-e");
     img.src = `../assets/${data.walle}.png`;
     img.alt = "Happy Wall-E";
 
+    const speechCont = document.createElement("div");
+    speechCont.classList.add("speech-container");
+
     const speech = document.createElement("p");
+    speech.classList.add("speech-bubble");
     speech.innerText = `${data.text}`;
+
+    const btnCont = document.createElement("div");
+    btnCont.classList.add("btn-container");
 
     const lobbyButton = document.createElement("button");
     lobbyButton.innerText = "< Lobby";
@@ -43,11 +53,13 @@ function loadSectionView(root, data){
         event.preventDefault();
     });
 
-    root.appendChild(background);
+    //root.appendChild(background);
     root.appendChild(title);
-    root.appendChild(img);
-    root.appendChild(speech);
-    root.appendChild(lobbyButton);
-    root.appendChild(teachPlanetsButton)
+    speechCont.appendChild(speech);
+    centerCont.appendChild(speechCont);
+    centerCont.appendChild(img);
+    root.appendChild(centerCont);
+    btnCont.appendChild(lobbyButton);
+    btnCont.appendChild(teachPlanetsButton);
+    root.appendChild(btnCont);
 }
-

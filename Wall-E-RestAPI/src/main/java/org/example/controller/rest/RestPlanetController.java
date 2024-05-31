@@ -24,6 +24,8 @@ public class RestPlanetController {
         this.planetService=planetService;
     }
 
+
+
     @RequestMapping(method = RequestMethod.GET, path ={"/",""})
     public ResponseEntity<List<Planet>> listPlanets() {
         List<Planet> planets = planetService.list();
@@ -45,7 +47,10 @@ public class RestPlanetController {
         if(bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        planetService.savePlanet(planet);
+
+        planetService.savePlanet(planet);////////
+
+
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

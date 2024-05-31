@@ -37,6 +37,8 @@ const sections = [
         title: "cleanPlanets",
         background: "space1",
         walle: "wallECleaning",
+        learnPlanetsBtn: "Learn about Planets",
+        teachPlanetsBtn: "Teach about Planets",
         text: "Let's schedule a Planet to clean:"
     }
 ];
