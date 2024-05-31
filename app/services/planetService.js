@@ -47,7 +47,7 @@ function planetDataService(name){
     console.log("Info of planet:", planetJSON);
 
     //return
-    addData(planetJSON);
+    addDataToMemory(planetJSON);///////////////////////////////////////////////////here is the function to save internally the data
   })
   .then(() => {
       console.log('Planet data added successfully');
@@ -59,23 +59,10 @@ function planetDataService(name){
   
     //return dataTransfer;
   }
-
-
-    //return sendDataToBackend(planetJSON);}
   )
   }
 
 
-  /////////////////////////////  storing in json  
-  // Function to fetch data from JSON file
-  
-  let planetData = [{
-    "Name": "Earth",
-    "Climate": "Terrestrial",
-    "Terrain": "Moderate",
-    "Population": "8100000000",
-    "Diameter": "12742"
-}];
 
   // Fetch existing data (in this case, just returns the in-memory data)
   function fetchData() {
@@ -89,17 +76,34 @@ function planetDataService(name){
     //  currentData.textContent = JSON.stringify(data, null, 2);}
 
 
-  
   // Add new data (expects a JSON string as input)
-  function addData(jsonString) {
-      try {
-          const newData = JSON.parse(jsonString);  // Parse the incoming JSON string
-          planetData.push(newData);  // Add the new data to the in-memory array
-          console.log('Data added successfully:');
-          fetchData();  // Update the display
-      } catch (error) {
-          console.error('Error parsing JSON:', error);
+  function addDataToMemory(jsonString) {
+    return fetch(`http://localhost:9001/Walle/api/planet/${jsonString.name}`), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: data,
+    }
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // console.log(responseData); // Success message from backend Return the JSON data if the request is successful
+      } else {
+        throw new Error('Failed to send data to backend');
       }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      throw error; // Propagate the error to the caller
+    });
+  };
+
+
+
+
+
+
+          
   }
 
 
