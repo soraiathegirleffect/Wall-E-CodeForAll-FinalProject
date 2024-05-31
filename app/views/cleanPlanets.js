@@ -48,8 +48,6 @@ function loadSectionView(root, data){
 
 
 
-
-    ///// not yet working
     const learnPlanetsButton = document.createElement("button");
     learnPlanetsButton.innerText = `${data.learnPlanetsBtn}`;
     learnPlanetsButton.classList.add("learnPlanetsButton");
