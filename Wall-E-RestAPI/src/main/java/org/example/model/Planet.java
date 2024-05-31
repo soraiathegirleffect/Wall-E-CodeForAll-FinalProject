@@ -1,16 +1,35 @@
 package org.example.model;
 
+
 import org.springframework.stereotype.Component;
+
+import org.springframework.lang.NonNull;
+import jakarta.persistence.Entity;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 
 
 public class Planet {
 
+    
+    private Long id;
 
-private String name;
-private String climate;
-private Double diameter;
-private Double population;
-private String terrain;
+private String Name;
+private String Climate;
+private Double Diameter;
+private Double Population;
+private String Terrain;
+
+public Long getId() {
+    return id;
+}
+
+public void setId(Long id) {
+    this.id = id;
+}
 
     public Planet(String name, String climate, Double diameter, Double population, String terrain) {
         this.name = name;
@@ -22,43 +41,43 @@ private String terrain;
 
 
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getClimate() {
-        return climate;
+        return Climate;
     }
 
-    public void setClimate(String climate) {
-        this.climate = climate;
+    public void setClimate(String Climate) {
+        this.Climate = Climate;
     }
 
     public Double getDiameter() {
-        return diameter;
+        return Diameter;
     }
 
-    public void setDiameter(Double diameter) {
-        this.diameter = diameter;
+    public void setDiameter(Double Diameter) {
+        this.Diameter = Diameter;
     }
 
     public Double getPopulation() {
-        return population;
+        return Population;
     }
 
-    public void setPopulation(Double population) {
-        this.population = population;
+    public void setPopulation(Double Population) {
+        this.Population = Population;
     }
 
     public String getTerrain() {
-        return this.terrain;
+        return this.Terrain;
     }
 
-    public void setTerrain(String terrain) {
-        this.terrain= terrain;
+    public void setTerrain(String Terrain) {
+        this.Terrain = Terrain;
     }
 }
 
