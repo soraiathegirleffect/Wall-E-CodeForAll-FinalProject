@@ -50,9 +50,9 @@ const routes = [
 ]; // if any of the above are not correctly defined the whole page wont load
 
 planetService();
-setupEvents();
 goto(document.location.pathname); // here we have defensive programming so we changed here instead of render
 window.addEventListener("popstate", render);
+setupEvents();
 
 function goto(url) {
   const route = routes.find((element) => element.url === url);

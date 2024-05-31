@@ -2,7 +2,7 @@ import {
   onLearnPlanetClick,
   onLobbyClick,
   onTeachPlanetClick,
-} from "./buttonClickHandlers";
+} from "./buttonClickHandlers.js";
 
 const clickEventMap = {
   ".Lobby": onLobbyClick,

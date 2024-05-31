@@ -33,7 +33,7 @@ function loadSectionView(root, data) {
 
   const cleanPlanetsButton = document.createElement("button");
   cleanPlanetsButton.innerText = `${data.cleanPlanetsBtn}`;
-  cleanPlanetsButton.classList.add("cleanPlanetsButton");
+  cleanPlanetsButton.classList.add("cleanPlanets", "btn");
 
   cleanPlanetsButton.addEventListener("click", (event) => {
     goto("/cleanplanets");
@@ -42,7 +42,7 @@ function loadSectionView(root, data) {
 
   const learnPlanetsButton = document.createElement("button");
   learnPlanetsButton.innerText = `${data.learnPlanetsBtn}`;
-  learnPlanetsButton.classList.add("learnPlanetsButton");
+  learnPlanetsButton.classList.add("learnPlanets", "btn");
 
   //  learnPlanetsButton.addEventListener("click", event => {
   //    goto("/learnplanets");
@@ -51,7 +51,7 @@ function loadSectionView(root, data) {
 
   const teachPlanetsButton = document.createElement("button");
   teachPlanetsButton.innerText = `${data.teachPlanetsBtn}`;
-  teachPlanetsButton.classList.add("teachPlanetsButton");
+  teachPlanetsButton.classList.add("teachPlanets", "btn");
 
   // teachPlanetsButton.addEventListener("click", event => {
   //   goto("/teachplanets");

@@ -1,9 +1,9 @@
-import { goto } from "../main";
-import getFruit from "../services/fruitService";
+import { goto } from "../main.js";
 
 //NAVIGATION
 
 export async function onLearnPlanetClick(event) {
+  console.log("button Clicked");
   goto("/learnplanets");
   event.preventDefault();
 }
