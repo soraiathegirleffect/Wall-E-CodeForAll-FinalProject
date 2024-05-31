@@ -12,8 +12,8 @@ public class Planet {
 
     private String Name;
     private String Climate;
-    private Double Diameter;
-    private Double Population;
+    private Integer Diameter;
+    private String Population;
     private String Terrain;
 
 

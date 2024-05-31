@@ -34,6 +34,7 @@ function planetInfoService(){
           Diameter: result.diameter
         };
       });
+      //console.log("mapped data", mappedData);
       return mappedData;
     })
   }
@@ -43,60 +44,52 @@ function planetDataService(name){
   return planetInfoService()
   .then(planets => {
     const planet = planets.find(item => item.Name === name);
-    const planetJSON = JSON.stringify(planet);
-    console.log("Info of planet:", planetJSON);
+    //const planetJSON = JSON.stringify(planet);
+    //console.log("Info of planet:", planetJSON); was working
+    if (!planet) {
+      throw new Error(`Planet with name ${name} not found`);
+  }
 
-    //return
-    addDataToMemory(planetJSON);///////////////////////////////////////////////////here is the function to save internally the data
+  console.log(JSON.stringify(planet));
+    return sendPlanetDataToAPI(planet);///////////////////////////////////////////////////here is the function to save internally the data
   })
   .then(() => {
       console.log('Planet data added successfully');
   })
   .catch(error => {
       console.error('Error processing planet data:', error);
-    //const dataTransfer = addData(planetJSON);
-    //console.log(dataTransfer);
-  
-    //return dataTransfer;
+
   }
   )
   }
 
+ 
 
 
-  // Fetch existing data (in this case, just returns the in-memory data)
-  function fetchData() {
-      console.log("Data currently stored is:", planetData);
-      //displayData(planetData);
-  }
-  
-  // Display the current data
-  //function displayData(data) {
-    //  const currentData = document.getElementById('currentData');
-    //  currentData.textContent = JSON.stringify(data, null, 2);}
 
-
-  // Add new data (expects a JSON string as input)
-  function addDataToMemory(jsonString) {
-    return fetch(`http://localhost:9001/Walle/api/planet/${jsonString.name}`), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: data,
-    }
-    .then(response => {
-      if (response.ok) {
-        return response.json(); // console.log(responseData); // Success message from backend Return the JSON data if the request is successful
-      } else {
-        throw new Error('Failed to send data to backend');
-      }
+  // Add new data 
+  function sendPlanetDataToAPI(planet) {
+    const url = `http://localhost:9001/Walle/api/planet/${planet.Name}`;
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(planet),
     })
-    .catch(error => {
-      console.error('Error:', error);
-      throw error; // Propagate the error to the caller
-    });
-  };
+    .then(response => {
+      if (!response.ok) {
+        return response.text().then(text => {
+            throw new Error(`Failed to send data to API: `);
+        });
+    }
+    console.log('Data sent to API successfully');
+})
+.catch(error => {
+    console.error('Error sending data to API:', error);
+    throw error; // Re-throw the error to be caught by planetDataService
+});
+}
 
 
 
