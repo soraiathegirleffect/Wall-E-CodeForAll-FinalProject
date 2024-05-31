@@ -103,16 +103,6 @@ function planetDataService(name){
 
 
 
-          
-  }
-
-
-
-
-
-
-
-
 
 
 
