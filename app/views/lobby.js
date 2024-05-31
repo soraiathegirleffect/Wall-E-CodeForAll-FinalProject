@@ -8,19 +8,39 @@ function lobby(root) {
 
 function loadSectionView(root, data){
 
-    const background = document.createElement("img");
-    background.src = `../assets/${data.background}.png`;
-    background.alt = "Space Background";
+    //const background = document.createElement("img");
+    //background.src = `../assets/${data.background}.png`;
+    //background.alt = "Space Background";
 
     const title = document.createElement("h1");
     title.innerText = `${data.title} page`;
 
+    const centerCont = document.createElement("div");
+    centerCont.classList.add("center-container");
+
     const img = document.createElement("img");
+    img.classList.add("wall-e");
     img.src = `../assets/${data.walle}.png`;
     img.alt = "Wall-E waiting";
 
+    const speechCont = document.createElement("div");
+    speechCont.classList.add("speech-container");
+
     const speech = document.createElement("p");
+    speech.classList.add("speech-bubble");
     speech.innerText = `${data.text}`;
+
+    const btnCont = document.createElement("div");
+    btnCont.classList.add("btn-container");
+
+    const cleanPlanetsButton = document.createElement("button");
+    cleanPlanetsButton.innerText = `${data.cleanPlanetsBtn}`;
+    cleanPlanetsButton.classList.add("cleanPlanetsButton");
+
+    cleanPlanetsButton.addEventListener("click", event => {
+        goto("/cleanplanets");
+        event.preventDefault();
+    });
 
     const learnPlanetsButton = document.createElement("button");
     learnPlanetsButton.innerText = `${data.learnPlanetsBtn}`;
@@ -40,20 +60,14 @@ function loadSectionView(root, data){
         event.preventDefault();
     });
 
-    const cleanPlanetsButton = document.createElement("button");
-    cleanPlanetsButton.innerText = `${data.cleanPlanetsBtn}`;
-    cleanPlanetsButton.classList.add("cleanPlanetsButton");
-
-    cleanPlanetsButton.addEventListener("click", event => {
-        goto("/cleanplanets");
-        event.preventDefault();
-    });
-
-    root.appendChild(background);
+    //root.appendChild(background);
     root.appendChild(title);
-    root.appendChild(img);
-    root.appendChild(speech);
-    root.appendChild(learnPlanetsButton);
-    root.appendChild(teachPlanetsButton);
-    root.appendChild(cleanPlanetsButton);
+    speechCont.appendChild(speech);
+    centerCont.appendChild(speechCont);
+    centerCont.appendChild(img);
+    root.appendChild(centerCont);
+    btnCont.appendChild(learnPlanetsButton);
+    btnCont.appendChild(teachPlanetsButton);
+    btnCont.appendChild(cleanPlanetsButton);
+    root.appendChild(btnCont);
 }
