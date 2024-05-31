@@ -1,11 +1,15 @@
 package org.example.model;
 
+
+import org.springframework.stereotype.Component;
+
 import org.springframework.lang.NonNull;
 import jakarta.persistence.Entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 
 
 public class Planet {
@@ -26,6 +30,15 @@ public Long getId() {
 public void setId(Long id) {
     this.id = id;
 }
+
+    public Planet(String name, String climate, Double diameter, Double population, String terrain) {
+        this.name = name;
+        this.climate = climate;
+        this.diameter = diameter;
+        this.population = population;
+        this.terrain = terrain;
+    }
+
 
     public String getName() {
         return Name;
