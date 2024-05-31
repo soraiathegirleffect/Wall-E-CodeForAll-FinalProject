@@ -11,12 +11,17 @@
     <packaging>war</packaging>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>6.0.10</spring.version>
+        <hibernate.version>6.2.6.Final</hibernate.version>
+        <thymeleaf.version>3.1.1.RELEASE</thymeleaf.version>
+        <hibernate.validator.version>7.0.1.Final</hibernate.validator.version>
+        <tomcat.plugin.version>2.2</tomcat.plugin.version>
     </properties>
 
     <dependencies>
+
+
 
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -67,6 +72,13 @@
             <version>2.1.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.9.2</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <dependency>
             <groupId>javax.validation</groupId>
@@ -79,17 +91,29 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.2</version>
         </dependency>
+
+
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <version>2.8.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>6.0.18</version>
+        </dependency>
+
+
+
+
+
 
     </dependencies>
 
     <build>
-        <finalName>JavaBank</finalName>
+        <finalName>WallE</finalName>
         <!-- a compiler plugin which indicates the version of Java used -->
         <plugins>
             <plugin>
@@ -113,6 +137,7 @@
                     <path>/Walle</path>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 

@@ -11,11 +11,20 @@ public class PlanetServiceImpl implements PlanetService {
 
     private static List<Planet> planets = new ArrayList<>();
 
+    static {
+        planets.add(new Planet("Earth", "Temperate", 12742.0, 7800000000.0, "Various"));
+        planets.add(new Planet("Mars", "Arid", 6779.0, 0.0, "Rocky"));
+        planets.add(new Planet("Venus", "Hot", 12104.0, 0.0, "Volcanic"));
+        planets.add(new Planet("Jupiter", "Gas Giant", 139820.0, 0.0, "Gaseous"));
+        planets.add(new Planet("Saturn", "Gas Giant", 116460.0, 0.0, "Gaseous"));
+    }
+
+
 
     @Override
     public Planet get(String name) {
         for (Planet planet : planets) {
-            if (planet.getName().equals(name)) {
+            if (planet.getName().equalsIgnoreCase(name)) {
                 return planet;
             }
         }
@@ -23,7 +32,7 @@ public class PlanetServiceImpl implements PlanetService {
     }
     @Override
     public List<Planet> list() {
-        return new ArrayList<>(planets);
+        return planets;
     }
 
     @Override

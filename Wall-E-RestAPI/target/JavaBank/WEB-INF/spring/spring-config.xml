@@ -11,7 +11,7 @@
     <mvc:annotation-driven/>
 
     <!-- Base package to search for spring beans -->
-    <context:component-scan base-package="src/main/java/org/example"/>
+    <context:component-scan base-package="Wall-E-RestAPI/src/main/java/org/example"/>
 
     <bean id="viewResolver" class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine"/>
