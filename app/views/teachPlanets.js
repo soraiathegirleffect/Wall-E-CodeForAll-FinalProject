@@ -2,7 +2,10 @@ export { teachPlanets };
 
 import { sections } from "../main.js"
 import { goto } from "../main.js"
+
 import { planetDataService } from "../services/planetService.js"
+
+
 
 function teachPlanets(root) {
     loadSectionView(root, sections.find(section => section.title === "teachPlanets"));

@@ -148,3 +148,4 @@ function planetDataService(name){
 //.then(planetData => {
 //    var results = planetData.results;
 //    results.forEach(result =>  result.name); })};
+
