@@ -1,6 +1,7 @@
 import {
   onLearnPlanetClick,
   onLobbyClick,
+  onPlanetClick,
   onTeachPlanetClick,
 } from "./buttonClickHandlers.js";
 
@@ -8,6 +9,7 @@ const clickEventMap = {
   ".Lobby": onLobbyClick,
   ".teachPlanets": onTeachPlanetClick,
   ".learnPlanets": onLearnPlanetClick,
+  ".planet": onPlanetClick,
 };
 
 async function dispatchClickEvents(event) {

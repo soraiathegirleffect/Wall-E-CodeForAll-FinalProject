@@ -5,7 +5,7 @@ const API_PLANETS1 = "https://swapi.dev/api/planets/?page=1";
 
 const MEMORY_URL = "http://localhost:9001/Walle/api/planet/";
 
-async function fetchAllPlanets() {
+export async function fetchAllPlanets() {
   const response = await fetch(`${API_PLANETS1}`);
 
   if (!response.ok) {
@@ -16,8 +16,8 @@ async function fetchAllPlanets() {
   return response.json();
 }
 
-async function addPlanetToMemory(planet) {
-  const response = await fetch(`${MEMORY_URL}` + planet.name, {
+export async function addPlanetToMemory(planet) {
+  const response = await fetch(`${MEMORY_URL}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,7 +39,7 @@ async function addPlanetToMemory(planet) {
   return response;
 }
 
-async function showPlanet(name) {
+export async function showPlanet(name) {
   const response = await fetch(`${MEMORY_URL}/${name}`);
 
   if (!response.ok) {
@@ -50,7 +50,7 @@ async function showPlanet(name) {
   return response.json();
 }
 
-async function fetchPlanetsStarWarsAPI() {
+export async function fetchPlanetsStarWarsAPI() {
   const response = await fetch(`${API_PLANETS1}`);
 
   const planetData = await response.json();
@@ -69,9 +69,9 @@ async function planetInfoService() {
     return {
       Name: result.name,
       Climate: result.climate,
-      Terrain: result.terrain,
-      Population: result.population,
       Diameter: result.diameter,
+      Population: result.population,
+      Terrain: result.terrain,
     };
   });
 

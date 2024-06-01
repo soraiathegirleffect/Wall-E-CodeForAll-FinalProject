@@ -35,6 +35,7 @@ function loadSectionView(root, data) {
   btnCont.classList.add("btn-container");
 
   const planetSelect = document.createElement("select");
+  planetSelect.classList.add("planet", "btn");
   const options = [
     "Planets",
     "Tatooine",
