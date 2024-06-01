@@ -69,7 +69,7 @@ function planetDataService(name){
 
   // Add new data 
   function sendPlanetDataToAPI(planet) {
-    const url = `http://localhost:9001/Walle/api/planet/${planet.Name}`;
+    const url = `http://localhost:9001/Walle/api/planet/`;
     fetch(url, {
         method: 'POST',
         headers: {

@@ -51,7 +51,7 @@ public class RestPlanetController {
         return new ResponseEntity<>(planet, HttpStatus.OK);
     }
 
-    @RequestMapping(method =RequestMethod.POST, path ={"/{name}"})
+    @RequestMapping(method =RequestMethod.POST, path ={"/"})
     public ResponseEntity<Planet> addPlanet(@Valid @RequestBody Planet planet, BindingResult bindingResult ) {
 
         if(bindingResult.hasErrors()) {

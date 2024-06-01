@@ -12,12 +12,12 @@ public class Planet {
 
     private String Name;
     private String Climate;
-    private Integer Diameter;
+    private String Diameter;
     private String Population;
     private String Terrain;
 
 
-    public Planet(String name, String climate, Integer diameter, String population, String terrain) {
+    public Planet(String name, String climate, String terrain, String population, String diameter) {
         this.Name = name;
         this.Climate = climate;
         this.Diameter = diameter;
@@ -42,11 +42,11 @@ public class Planet {
         this.Climate = Climate;
     }
 
-    public Integer getDiameter() {
+    public String getDiameter() {
         return Diameter;
     }
 
-    public void setDiameter(Integer Diameter) {
+    public void setDiameter(String Diameter) {
         this.Diameter = Diameter;
     }
 
