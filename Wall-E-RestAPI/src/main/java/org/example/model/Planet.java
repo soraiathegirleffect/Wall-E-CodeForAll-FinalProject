@@ -21,9 +21,9 @@ public class Planet {
 
     public Planet() {
     }
-    
+
     @JsonCreator
-    public Planet(@JsonProperty("name") String name, @JsonProperty("climate") String climate, @JsonProperty("terrain") String terrain, @JsonProperty("population") String population, @JsonProperty("diameter") String diameter) {
+    public Planet(@JsonProperty("Name") String name, @JsonProperty("Climate") String climate, @JsonProperty("Terrain") String terrain, @JsonProperty("Population") String population, @JsonProperty("Diameter") String diameter) {
         this.Name = name;
         this.Climate = climate;
         this.Diameter = diameter;
