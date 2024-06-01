@@ -17,7 +17,7 @@ public class Planet {
     private String Terrain;
 
 
-    public Planet(String name, String climate, Double diameter, Double population, String terrain) {
+    public Planet(String name, String climate, Integer diameter, String population, String terrain) {
         this.Name = name;
         this.Climate = climate;
         this.Diameter = diameter;
@@ -42,19 +42,19 @@ public class Planet {
         this.Climate = Climate;
     }
 
-    public Double getDiameter() {
+    public Integer getDiameter() {
         return Diameter;
     }
 
-    public void setDiameter(Double Diameter) {
+    public void setDiameter(Integer Diameter) {
         this.Diameter = Diameter;
     }
 
-    public Double getPopulation() {
+    public String getPopulation() {
         return Population;
     }
 
-    public void setPopulation(Double Population) {
+    public void setPopulation(String Population) {
         this.Population = Population;
     }
 

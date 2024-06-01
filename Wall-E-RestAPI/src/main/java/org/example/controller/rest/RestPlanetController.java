@@ -32,6 +32,12 @@ public class RestPlanetController {
     public ResponseEntity<List<Planet>> listPlanets() {
         List<Planet> planets = planetService.list();
 
+        //List<Planet> planets = new ArrayList<>();
+//        planets.add(new Planet("Earth", "Temperate", 12742.0, 7800000000.0, "Various"));
+//        planets.add(new Planet("Mars", "Arid", 6779.0, 0.0, "Rocky"));
+//        planets.add(new Planet("Venus", "Hot", 12104.0, 0.0, "Volcanic"));
+//        planets.add(new Planet("Jupiter", "Gas Giant", 139820.0, 0.0, "Gaseous"));
+//        planets.add(new Planet("Saturn", "Gas Giant", 116460.0, 0.0, "Gaseous"));
 
         return new ResponseEntity<>(planets, HttpStatus.OK);
     }
@@ -45,26 +51,6 @@ public class RestPlanetController {
         return new ResponseEntity<>(planet, HttpStatus.OK);
     }
 
-
-
-    @RequestMapping(method = RequestMethod.POST, path = "/{name}")
-    public ResponseEntity<Planet> addPlanet(@PathVariable String name, @Valid @RequestBody Planet planet, BindingResult bindingResult) {
-    if (bindingResult.hasErrors()) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    // Assuming planetService.savePlanet returns the saved planet object
-    Planet savedPlanet = planetService.savePlanet(planet);
-    if (savedPlanet == null) {
-        // Error occurred while saving the planet
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    return new ResponseEntity<>(savedPlanet, HttpStatus.CREATED);
-}
-
-
-    /*
     @RequestMapping(method =RequestMethod.POST, path ={"/{name}"})
     public ResponseEntity<Planet> addPlanet(@Valid @RequestBody Planet planet, BindingResult bindingResult ) {
 
@@ -72,15 +58,22 @@ public class RestPlanetController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        planetService.savePlanet(planet);
+        planetService.savePlanet(planet);////////
 
 
         return new ResponseEntity<>(HttpStatus.CREATED);
-    }*/
-
-
-
-
-
-
+    }
 }
+
+
+    
+
+    /*
+    Planet savedPlanet = planetService.savePlanet(planet);
+    if (savedPlanet == null) {
+        // Error occurred while saving the planet
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    return new ResponseEntity<>(savedPlanet, HttpStatus.CREATED);
+}*/
