@@ -1,4 +1,3 @@
-export { planetService };
 export { planetInfoService };
 export { planetData };
 

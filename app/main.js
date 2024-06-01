@@ -6,7 +6,7 @@ import { learnPlanets } from "./views/learnPlanets.js";
 import { teachPlanets } from "./views/teachPlanets.js";
 import { cleanPlanets } from "./views/cleanPlanets.js";
 
-import { planetService } from "./services/planetService.js";
+//import { planetService } from "./services/planetService.js";
 
 import { setupEvents } from "./controllers/mainControllers.js";
 
@@ -49,7 +49,7 @@ const routes = [
   //{ url:"/error", page: error }
 ]; // if any of the above are not correctly defined the whole page wont load
 
-planetService();
+//planetService();
 goto(document.location.pathname); // here we have defensive programming so we changed here instead of render
 window.addEventListener("popstate", render);
 setupEvents();

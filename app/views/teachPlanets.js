@@ -3,7 +3,7 @@ export { teachPlanets };
 import { sections } from "../main.js";
 import { goto } from "../main.js";
 
-import { planetDataService } from "../services/planetService.js";
+//import { planetDataService } from "../services/planetService.js";
 
 function teachPlanets(root) {
   loadSectionView(
@@ -56,9 +56,9 @@ function loadSectionView(root, data) {
     planetSelect.appendChild(option); // Append the option to the select element
   });
 
-  planetSelect.addEventListener("change", (event) =>
-    planetDataService(event.target.value)
-  );
+  //planetSelect.addEventListener("change", (event) =>
+  //planetDataService(event.target.value)
+  // );
 
   const lobbyButton = document.createElement("button");
   lobbyButton.innerText = "< Lobby";
