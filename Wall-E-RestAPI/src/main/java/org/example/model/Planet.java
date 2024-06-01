@@ -3,6 +3,9 @@ package org.example.model;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.springframework.lang.NonNull;
 
 
@@ -16,8 +19,11 @@ public class Planet {
     private String Population;
     private String Terrain;
 
-
-    public Planet(String name, String climate, String terrain, String population, String diameter) {
+    public Planet() {
+    }
+    
+    @JsonCreator
+    public Planet(@JsonProperty("name") String name, @JsonProperty("climate") String climate, @JsonProperty("terrain") String terrain, @JsonProperty("population") String population, @JsonProperty("diameter") String diameter) {
         this.Name = name;
         this.Climate = climate;
         this.Diameter = diameter;
