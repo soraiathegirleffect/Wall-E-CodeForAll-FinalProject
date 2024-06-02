@@ -6,6 +6,6 @@ export const successMessage = {
 };
 
 export const errorMessage = {
-  addPlanet: "Wall-E already nows this Planet",
+  addPlanet: "Wall-E already knows this Planet",
   server: "Wall-E memory is not responding. Please try later",
 };

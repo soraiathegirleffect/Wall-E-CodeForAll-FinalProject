@@ -58,10 +58,13 @@ public class RestPlanetController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        planetService.savePlanet(planet);//////////////////////////////////////////////////
+        boolean isSaved = planetService.savePlanet(planet);
 
-
+    if (isSaved) {
         return new ResponseEntity<>(HttpStatus.CREATED);
+    } else {
+        return new ResponseEntity<>(HttpStatus.CONFLICT); // 409 Conflict if planet already exists
+    }
     }
 
 

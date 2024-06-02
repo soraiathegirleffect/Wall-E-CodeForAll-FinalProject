@@ -38,13 +38,14 @@ public class PlanetServiceImpl implements PlanetService {
     }
 
     @Override //save in wall-E memory the planets he learned //////////////////
-    public void savePlanet(Planet planet) {
-        
-        if (!planets.contains(planet)) {
+    public boolean savePlanet(Planet planet) {
+        if (!existsByName(planet.getName())) {
             planets.add(planet);
             System.out.println("Planet saved: " + planet.getName());
+            return true; // Planet was successfully added
         } else {
             System.out.println("Planet already exists: " + planet.getName());
+            return false; // Planet already exists
         }
     }
 
@@ -55,5 +56,4 @@ public class PlanetServiceImpl implements PlanetService {
     public boolean existsByName(String name) {
         return planets.stream().anyMatch(planet -> planet.getName().equalsIgnoreCase(name));
     }    //null pointer exception
-
 }

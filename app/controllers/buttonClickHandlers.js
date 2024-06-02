@@ -35,16 +35,19 @@ export async function onLobbyClick(event) {
 export async function onPlanetClick(event) {
   event.preventDefault();
   try {
-    const planet = await planetData(event.target.value);//////////////////////////////
-    //const hasPlanet = await addPlanetToMemory(planet);//splitting these functions doesnt allow data to be stored
-/*
-    if (hasPlanet.status === 201) {
+    const planet = await planetData(event.target.value); // Get planet data
+    const response = await addPlanetToMemory(planet); // Get the response from addPlanetToMemory
+
+    if (response.status === 201) { // Check response status
       renderAlertModal(successTitle, successMessage.addPlanet);
-      //goto("/");
-    } else {
+      // goto("/");
+    } else if (response.status === 409) { // Handle conflict status
       renderAlertModal(errorTitle, errorMessage.addPlanet);
-      //goto("/");
-    }*/
+      // goto("/");
+    } else {
+      renderAlertModal(errorTitle, errorMessage.server);
+      // goto("/");
+    }
   } catch (error) {
     renderAlertModal(errorTitle, errorMessage.server);
     // goto("/");
