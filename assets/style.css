@@ -203,18 +203,40 @@ body {
 
 
 .planet-card {
-  border: 1px solid #ccc;
+  background-color: rgba(41, 41, 179, 0.5); /* Semi-transparent blue background */
+  color: white; /* White text color */
+  border: none; /* No border */
   border-radius: 8px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Box shadow for pop-out effect */
   padding: 16px;
-  margin: 16px;
-  transition: transform 0.2s;
+  margin: 16px auto; /* Auto margin for centering horizontally */
+  transition: transform 0.2s; /* Transition for the "pop-out" effect */
+  width: calc(50% - 32px); /* Set width to half the container's width with padding and margin */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .planet-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
 .planet-card h2 {
-  margin-top: 0;
+  margin-top: 0; /* Remove top margin for consistency */
+}
+
+
+.cleanCard {
+  background-color: rgba(41, 41, 179, 0.5); /* Semi-transparent blue background */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Increased padding for better spacing */
+  margin-bottom: 20px; /* Increased margin for better spacing */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  display: inline-block; /* Display cards as inline-block */
+  text-align: left; /* Justify content to the left */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Box shadow for pop-out effect */
+}
+
+.cleanCard:hover {
+  background-color: rgba(0, 0, 255, 0.7); /* Darker semi-transparent blue background on hover */
 }

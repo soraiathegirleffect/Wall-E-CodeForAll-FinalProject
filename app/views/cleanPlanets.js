@@ -2,6 +2,7 @@ export { cleanPlanets };
 
 import { sections } from "../main.js";
 import { goto } from "../main.js";
+const MEMORY_URL = "http://localhost:9001/Walle/api/planet/"
 
 function cleanPlanets(root) {
   loadSectionView(
@@ -68,16 +69,52 @@ function loadSectionView(root, data) {
   btnCont.appendChild(teachPlanetsButton);
   btnCont.appendChild(lobbyButton);
   root.appendChild(btnCont);
+  
+  fetchPlanetsAndCreateCards(root);
+}
 
-  // Create a function to add a form group
-  function createFormGroup(labelText, inputElement) {
-    const formGroup = document.createElement("div");
-
-    const label = document.createElement("label");
-    label.textContent = labelText;
-
-    formGroup.appendChild(label);
-    formGroup.appendChild(inputElement);
-    return formGroup;
+async function fetchPlanetsAndCreateCards(root) {
+  try {
+    const response = await fetch(MEMORY_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch planets: ${response.statusText}`);
+    }
+    const planets = await response.json();
+    createPlanetCards(planets, root);
+  } catch (error) {
+    console.error('Error fetching planets:', error);
   }
 }
+
+
+
+function createPlanetCards(planets, root) {
+  const planetsList = document.createElement("ul");
+  planetsList.classList.add("planets-list");
+
+  planets.forEach(planet => {
+    const card = document.createElement('div');
+    card.className = 'cleanCard';
+
+    card.innerHTML = `
+      <h2>${planet.name}</h2>
+      <p><strong>Terrain:</strong> ${planet.terrain}</p>
+      <p><strong>Diameter:</strong> ${planet.diameter}</p>
+    `;
+
+    card.addEventListener('click', () => {
+      if (planet.diameter > 12000) {
+        alert("This planet is too big. It will take weeks to clean.");
+      } else {
+        alert("I'll clean this planet within this week.");
+      }
+    });
+
+    planetsList.appendChild(card);
+  });
+
+  root.appendChild(planetsList);
+}
+
+
+

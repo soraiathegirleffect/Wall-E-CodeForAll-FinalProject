@@ -29,14 +29,14 @@ const sections = [
     title: "teachPlanets",
     walle: "wallELearning",
     learnPlanetsBtn: "Learn about Planets",
-    text: "Teach me a Planet from the list by selecting Planets:",
+    text: "Teach me a Planet from the list  >Planets< ",
   },
   {
     title: "cleanPlanets",
     walle: "wallECleaning",
     learnPlanetsBtn: "Learn about Planets",
     teachPlanetsBtn: "Teach about Planets",
-    text: "Let's schedule a Planet to clean:",
+    text: "Do you want me to clean a Planet? Tell me which one: ",
   },
 ];
 
