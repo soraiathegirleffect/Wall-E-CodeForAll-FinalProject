@@ -2,12 +2,16 @@ export { learnPlanets };
 
 import { sections } from "../main.js";
 import { goto } from "../main.js";
+import { fetchAllPlanets } from "../services/planetService.js";
+
+const MEMORY_URL = "http://localhost:9001/Walle/api/planet/"
 
 function learnPlanets(root) {
   loadSectionView(
     root,
     sections.find((section) => section.title === "learnPlanets")
   );
+  fetchPlanets(root);
 }
 
 function loadSectionView(root, data) {
@@ -36,19 +40,11 @@ function loadSectionView(root, data) {
   lobbyButton.innerText = "< Lobby";
   lobbyButton.classList.add("btn", "Lobby");
 
-  // lobbyButton.addEventListener("click", event => {
-  //   goto("/");
-  //  event.preventDefault();
-  // });
 
   const teachPlanetsButton = document.createElement("button");
   teachPlanetsButton.innerText = `${data.teachPlanetsBtn}`;
   teachPlanetsButton.classList.add("teachPlanets", "btn");
 
-  // teachPlanetsButton.addEventListener("click", event => {
-  //   goto("/teachplanets");
-  // event.preventDefault();
-  // });
 
   root.appendChild(title);
   speechCont.appendChild(speech);
@@ -58,4 +54,54 @@ function loadSectionView(root, data) {
   btnCont.appendChild(lobbyButton);
   btnCont.appendChild(teachPlanetsButton);
   root.appendChild(btnCont);
+
 }
+  /////////////////////////////////////////////////////////////////////
+  //////////////////
+
+ 
+  
+  async function fetchPlanets(root) {
+    try {
+      const response = await fetch(MEMORY_URL);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch planets: ${response.statusText}`);
+      }
+      const planets = await response.json();
+      createPlanetCards(planets, root);
+    } catch (error) {
+      console.error('Error fetching planets:', error);
+    }
+  }
+
+
+
+  function createPlanetCards(planets, root) {
+    const planetsContainer = document.createElement('div');
+    planetsContainer.classList.add('allPlanets');
+  
+    planets.forEach(planet => {
+      const card = document.createElement('div');
+      card.className = 'planet-card';
+      card.innerHTML = `
+        <h2>${planet.name}</h2>
+        <p><strong>Climate:</strong> ${planet.climate}</p>
+        <p><strong>Diameter:</strong> ${planet.diameter}</p>
+        <p><strong>Population:</strong> ${planet.population}</p>
+        <p><strong>Terrain:</strong> ${planet.terrain}</p>
+      `;
+      planetsContainer.appendChild(card);
+    });
+  
+    // Clear previous planet cards if any
+    const existingContainer = root.querySelector('.allPlanets');
+    if (existingContainer) {
+      root.removeChild(existingContainer);
+    }
+  
+    root.appendChild(planetsContainer);
+  }
+  
+  
+
+/////////////////////////////////////////////
