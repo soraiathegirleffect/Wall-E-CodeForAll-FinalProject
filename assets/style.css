@@ -164,3 +164,57 @@ body {
     color: #c7aa54;
     pointer-events: none;
   }
+
+
+  .modal-content {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(224, 229, 236, 0.65);
+    color: black;
+    font-weight: bold;
+    box-shadow: -8px -8px 20px 0px #fff9, -6px -6px 6px 0px #fff9,
+        8px 8px 20px 0px #0001, 5px 5px 6px 0px #0001, inset 0px 0px 0px 0px #fff9,
+        inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
+        inset 0px 0px 0px 0px #0001;
+    font-size: 1.2em;
+    line-height: 2;
+    border-radius: 10px;
+    padding: 2px 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto; /* Center the modal horizontally */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+.planet-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  transition: transform 0.2s;
+}
+
+.planet-card:hover {
+  transform: scale(1.05);
+}
+
+.planet-card h2 {
+  margin-top: 0;
+}

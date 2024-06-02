@@ -15,27 +15,29 @@ export async function fetchAllPlanets() {
   return response.json();
 }
 
-export async function addPlanetToMemory(planet) { ////////////////////////////////////////////////////////////////
-  fetch(`${MEMORY_URL}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(planet),
-  })
-  .then(response => {
+export async function addPlanetToMemory(planet) {
+  try {
+    const response = await fetch(`${MEMORY_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(planet),
+    });
+
     if (!response.ok) {
-      return response.text().then(text => {
-          throw new Error(`Failed to send data to API: `);
-      });
+      throw new Error(`Failed to send data to API: ${response.statusText}`);
+    }
+
+    console.log('Data sent to API successfully');
+    return response; // Return the response object
+  } catch (error) {
+    console.error('Error sending data to API:', error);
+    throw error; // Re-throw the error to be caught by the calling function
   }
-  console.log('Data sent to API successfully');
-})
-.catch(error => {
-  console.error('Error sending data to API:', error);
-  throw error; // Re-throw the error to be caught by planetDataService
-});
 }
+
+
 
 export async function showPlanet(name) {
   const response = await fetch(`${MEMORY_URL}/${name}`);
@@ -76,30 +78,22 @@ export async function planetInfoService() {
 }
 
 export async function planetData(name) {
-  return planetInfoService()
-  .then(planets => {
+  try {
+    const planets = await planetInfoService();
     const planet = planets.find(item => item.Name === name);
-    //const planetJSON = JSON.stringify(planet);
-    //console.log("Info of planet:", planetJSON); was working
+
     if (!planet) {
       throw new Error(`Planet with name ${name} not found`);
-  }
+    }
 
-  console.log(JSON.stringify(planet));
-  addPlanetToMemory(planet);///////////////////////////////////////////////////here is the function to save internally the data////////////
-  })
-  .then(() => {
-      console.log('Planet data added successfully');
-  })
-  .catch(error => {
-      console.error('Error processing planet data:', error);
+    console.log(JSON.stringify(planet));
 
-  }
-  )
-  }
+    return planet; // Return the planet data
 
-//function nameService(){
-//planetService()
-//.then(planetData => {
-//    var results = planetData.results;
-//    results.forEach(result =>  result.name); })};
+    
+  } catch (error) {
+    console.error('Error processing planet data:', error);
+    throw error; // Re-throw the error to be caught by the calling function
+  }
+}
+

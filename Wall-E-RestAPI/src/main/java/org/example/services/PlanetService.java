@@ -22,7 +22,7 @@ public interface PlanetService {
     /**
      * Save Planet in memory
      */
-    void savePlanet(Planet planet);
+    boolean savePlanet(Planet planet);
 
 
 }
