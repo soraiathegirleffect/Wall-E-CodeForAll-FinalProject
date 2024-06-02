@@ -11,7 +11,7 @@ function learnPlanets(root) {
     root,
     sections.find((section) => section.title === "learnPlanets")
   );
-  fetchPlanets(root);
+  
 }
 
 function loadSectionView(root, data) {
@@ -55,10 +55,9 @@ function loadSectionView(root, data) {
   btnCont.appendChild(teachPlanetsButton);
   root.appendChild(btnCont);
 
-}
-  /////////////////////////////////////////////////////////////////////
-  //////////////////
+  fetchPlanets(root);
 
+}
  
   
   async function fetchPlanets(root) {
@@ -102,6 +101,3 @@ function loadSectionView(root, data) {
     root.appendChild(planetsContainer);
   }
   
-  
-
-/////////////////////////////////////////////
