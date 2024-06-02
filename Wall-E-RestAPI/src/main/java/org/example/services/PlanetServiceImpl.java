@@ -1,6 +1,7 @@
 package org.example.services;
 
 import org.example.model.Planet;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,8 +13,9 @@ public class PlanetServiceImpl implements PlanetService {
 
     private static List<Planet> planets = new ArrayList<>();
 
-    static {
 
+    static {
+        
         planets.add(new Planet("Earth", "Temperate",  "Various", "7800000000", "12742"));
         planets.add(new Planet("Mars", "Arid", "Rocky", "0", "6779" ));
 
@@ -29,6 +31,7 @@ public class PlanetServiceImpl implements PlanetService {
         }
         return null;
     }
+
     @Override //retrieve the full planets learned list
     public List<Planet> list() {
         return planets;
@@ -36,7 +39,8 @@ public class PlanetServiceImpl implements PlanetService {
 
     @Override //save in wall-E memory the planets he learned //////////////////
     public void savePlanet(Planet planet) {
-        if (!existsByName(planet.getName())) {
+        
+        if (!planets.contains(planet)) {
             planets.add(planet);
             System.out.println("Planet saved: " + planet.getName());
         } else {
@@ -44,17 +48,12 @@ public class PlanetServiceImpl implements PlanetService {
         }
     }
 
-    public List<Planet> getAllPlanets() {
-        return planetRepository.findAll();
-        //return new ArrayList<>(planets);
-    }
+    //public List<Planet> getAllPlanets() {
+      //  return planetRepository.findAll();
+        //return new ArrayList<>(planets);}
 
     public boolean existsByName(String name) {
         return planets.stream().anyMatch(planet -> planet.getName().equalsIgnoreCase(name));
-    }
-        
-        
-        //if (!planets.contains(planet)) {
-        //    planets.add(planet);
-        //    console.log("saved yay");
+    }    //null pointer exception
+
 }

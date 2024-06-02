@@ -6,21 +6,24 @@ import {
 } from "./buttonClickHandlers.js";
 
 const clickEventMap = {
-  ".Lobby": onLobbyClick,
-  ".teachPlanets": onTeachPlanetClick,
-  ".learnPlanets": onLearnPlanetClick,
-  ".planet": onPlanetClick,
+  ".Lobby": { handler: onLobbyClick, event: "click" },
+  ".teachPlanets": { handler: onTeachPlanetClick, event: "click" },
+  ".learnPlanets": { handler: onLearnPlanetClick, event: "click" },
+  ".planet": { handler: onPlanetClick, event: "change" }, // Updated for change event
 };
 
 async function dispatchClickEvents(event) {
   for (const selector in clickEventMap) {
-    if (event.target.matches(selector)) {
-      await clickEventMap[selector](event);
+    if (event.target.matches(selector) && event.type === clickEventMap[selector].event) {
+      await clickEventMap[selector].handler(event);
       break;
     }
   }
 }
 
+
 export async function setupEvents() {
   document.addEventListener("click", dispatchClickEvents);
+  document.addEventListener("change", dispatchClickEvents); // Added for change events
 }
+

@@ -35,16 +35,16 @@ export async function onLobbyClick(event) {
 export async function onPlanetClick(event) {
   event.preventDefault();
   try {
-    const planet = await planetData(event.target.value);
-    const hasPlanet = await addPlanetToMemory(planet);
-
+    const planet = await planetData(event.target.value);//////////////////////////////
+    //const hasPlanet = await addPlanetToMemory(planet);//splitting these functions doesnt allow data to be stored
+/*
     if (hasPlanet.status === 201) {
       renderAlertModal(successTitle, successMessage.addPlanet);
       //goto("/");
     } else {
       renderAlertModal(errorTitle, errorMessage.addPlanet);
       //goto("/");
-    }
+    }*/
   } catch (error) {
     renderAlertModal(errorTitle, errorMessage.server);
     // goto("/");

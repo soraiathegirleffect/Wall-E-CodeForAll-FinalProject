@@ -1,5 +1,4 @@
-export { planetInfoService };
-export { planetData };
+
 
 const API_PLANETS1 = "https://swapi.dev/api/planets/?page=1";
 
@@ -16,27 +15,26 @@ export async function fetchAllPlanets() {
   return response.json();
 }
 
-export async function addPlanetToMemory(planet) {
-  const response = await fetch(`${MEMORY_URL}`, {
+export async function addPlanetToMemory(planet) { ////////////////////////////////////////////////////////////////
+  fetch(`${MEMORY_URL}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      Name: planet.name,
-      Climate: planet.climate,
-      Diameter: planet.diameter,
-      Population: planet.population,
-      Terrain: planet.terrain,
-    }),
-  });
-
-  if (!response.ok) {
-    const errorMessage = await response.text();
-    throw new Error(errorMessage);
+    body: JSON.stringify(planet),
+  })
+  .then(response => {
+    if (!response.ok) {
+      return response.text().then(text => {
+          throw new Error(`Failed to send data to API: `);
+      });
   }
-
-  return response;
+  console.log('Data sent to API successfully');
+})
+.catch(error => {
+  console.error('Error sending data to API:', error);
+  throw error; // Re-throw the error to be caught by planetDataService
+});
 }
 
 export async function showPlanet(name) {
@@ -58,11 +56,10 @@ export async function fetchPlanetsStarWarsAPI() {
   return planetData;
 }
 
-async function planetInfoService() {
-  let mapDataObject = {};
+export async function planetInfoService() {
 
   //planetService()
-  const planetData = await planetService();
+  const planetData = await fetchPlanetsStarWarsAPI();//////////////////////////////////////////////////////////////////////
   //.then(planetData => {
   const results = planetData.results;
   const mappedData = results.map((result) => {
@@ -78,17 +75,28 @@ async function planetInfoService() {
   return mappedData;
 }
 
-async function planetData(name) {
-  const planets = await planetInfoService();
-  const planet = planets.find((item) => item.Name === name);
-
-  if (planet) {
-    const planetJSON = JSON.stringify(planet);
-
-    console.log(planetJSON);
-    return planetJSON;
+export async function planetData(name) {
+  return planetInfoService()
+  .then(planets => {
+    const planet = planets.find(item => item.Name === name);
+    //const planetJSON = JSON.stringify(planet);
+    //console.log("Info of planet:", planetJSON); was working
+    if (!planet) {
+      throw new Error(`Planet with name ${name} not found`);
   }
-}
+
+  console.log(JSON.stringify(planet));
+  addPlanetToMemory(planet);///////////////////////////////////////////////////here is the function to save internally the data////////////
+  })
+  .then(() => {
+      console.log('Planet data added successfully');
+  })
+  .catch(error => {
+      console.error('Error processing planet data:', error);
+
+  }
+  )
+  }
 
 //function nameService(){
 //planetService()
