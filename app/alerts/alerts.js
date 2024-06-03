@@ -2,7 +2,7 @@ export const successTitle = "Success";
 export const errorTitle = "Error";
 
 export const successMessage = {
-  addPlanet: "Planet learned successfully.",
+  addPlanet: "Planet learned successfully! ",
 };
 
 export const errorMessage = {
