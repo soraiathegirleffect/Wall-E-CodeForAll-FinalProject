@@ -2,7 +2,7 @@
   <img src="https://github.com/soraiathegirleffect/Wall-E-CodeForAll-FinalProject/raw/main/Wall-E.jpg" alt="BannerImage">
 </p>
 <h1 align="center">Wall-E</h1>
-<p align="center">web application aims to provide detailed information about various fruits and their nutritional values
+<p align="center">web application aims to provide detailed information about various planets and schedule their cleaning
 </p>
 
 <h2>Languages and Technologies</h2>
@@ -24,7 +24,7 @@
 <h2>Links to APIs</h2>
 
 <ul>
-  <li><a href="https://www.fruityvice.com/doc/index.html">fruity vice</a></li>
+  <li><a href="https://www.fruityvice.com/doc/index.html](https://swapi.dev/">Star Wars API</a></li>
 </ul>
 
 <h2>List of Contributors</h1>
