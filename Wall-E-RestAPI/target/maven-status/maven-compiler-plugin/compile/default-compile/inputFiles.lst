@@ -1,5 +1,6 @@
 /home/soraia/workspace/Wall-E-CodeForAll-FinalProject/Wall-E-RestAPI/src/main/java/org/example/controller/rest/RestPlanetController.java
 /home/soraia/workspace/Wall-E-CodeForAll-FinalProject/Wall-E-RestAPI/src/main/java/org/example/services/PlanetServiceImpl.java
+/home/soraia/workspace/Wall-E-CodeForAll-FinalProject/Wall-E-RestAPI/src/main/java/org/example/model/CleaningScheduleRequest.java
 /home/soraia/workspace/Wall-E-CodeForAll-FinalProject/Wall-E-RestAPI/src/main/java/org/example/services/PlanetRepository.java
 /home/soraia/workspace/Wall-E-CodeForAll-FinalProject/Wall-E-RestAPI/src/main/java/org/example/model/Planet.java
 /home/soraia/workspace/Wall-E-CodeForAll-FinalProject/Wall-E-RestAPI/src/main/java/org/example/services/PlanetService.java

@@ -81,13 +81,39 @@ function loadSectionView(root, data) {
     planets.forEach(planet => {
       const card = document.createElement('div');
       card.className = 'planet-card';
+
+      // Check if there are cleaning requests for the planet
+      // Check if there are cleaning requests for the planet
+      const cleaningRequests = planet.cleaningScheduleRequests;
+      let cleaningMonths = cleaningRequests.map(request => request.cleaningMonth).join(', ');
+      let cleaningInfo = cleaningRequests.length > 0 ? `<strong>Clean requests for:</strong> ${cleaningMonths}` : "No cleaning requests";
+
+
       card.innerHTML = `
         <h2>${planet.name}</h2>
         <p><strong>Climate:</strong> ${planet.climate}</p>
         <p><strong>Diameter:</strong> ${planet.diameter}</p>
         <p><strong>Population:</strong> ${planet.population}</p>
         <p><strong>Terrain:</strong> ${planet.terrain}</p>
+        <p>${cleaningInfo}</p>
       `;
+
+      // If there are no cleaning requests, create a button to navigate to the '/cleanplanets' page
+      if (cleaningRequests.length === 0) {
+        const button = document.createElement('button');
+        button.textContent = 'Create a Cleaning Request';
+        button.addEventListener('click', (event) => {
+            goto("/cleanplanets");
+            event.preventDefault();
+        });
+        card.appendChild(button);
+        }
+
+        card.addEventListener('click', () => {
+          openFormModal(planet.name, planet.diameter, root);
+      });
+
+
       planetsContainer.appendChild(card);
     });
   

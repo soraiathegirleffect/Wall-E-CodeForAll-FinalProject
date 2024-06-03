@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 
 
@@ -18,6 +21,7 @@ public class Planet {
     private String Diameter;
     private String Population;
     private String Terrain;
+    private List<CleaningScheduleRequest> cleaningScheduleRequests;
 
     public Planet() {
     }
@@ -29,7 +33,24 @@ public class Planet {
         this.Diameter = diameter;
         this.Population = population;
         this.Terrain = terrain;
+        this.cleaningScheduleRequests = new ArrayList<>();
     }
+
+
+    
+    public List<CleaningScheduleRequest> getCleaningScheduleRequests() {
+        return cleaningScheduleRequests;
+    }
+
+    public void setCleaningScheduleRequests(List<CleaningScheduleRequest> cleaningScheduleRequests) {
+        this.cleaningScheduleRequests = cleaningScheduleRequests;
+    }
+
+    public void addCleaningScheduleRequest(CleaningScheduleRequest cleaningScheduleRequest) {
+        this.cleaningScheduleRequests.add(cleaningScheduleRequest);
+    }
+    
+
 
 
     public String getName() {

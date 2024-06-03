@@ -1,5 +1,6 @@
 package org.example.controller.rest;
 
+import org.example.model.CleaningScheduleRequest;
 import org.example.model.Planet;
 
 import org.example.services.PlanetServiceImpl;
@@ -62,6 +63,38 @@ public class RestPlanetController {
 
 
 
+    ////////////************************///////
+
+    @RequestMapping(method = RequestMethod.POST, path = "/{name}/clean")
+    public ResponseEntity<?> addCleaningSchedule(@PathVariable String name,
+                                             @Valid @RequestBody CleaningScheduleRequest request,
+                                             BindingResult bindingResult) {
+
+    if (bindingResult.hasErrors()) {
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    
+    boolean isSavedSchedule = planetService.saveSchedule(name, request);
+
+    if (isSavedSchedule) {
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    } else {
+        return new ResponseEntity<>(HttpStatus.CONFLICT); // 409 Conflict if planet already exists
+    }
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, path ={"/{name}/clean"})
+    public ResponseEntity<List<CleaningScheduleRequest>> listSchedules(@PathVariable String name) {
+        List<CleaningScheduleRequest> cleaningSchedule = planetService.getCleaningScheduleRequests(name);;
+
+        if (cleaningSchedule != null) {
+            return new ResponseEntity<>(cleaningSchedule, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 
