@@ -1,4 +1,3 @@
-export { learnPlanets };
 
 import { sections } from "../main.js";
 import { goto } from "../main.js";
@@ -6,7 +5,7 @@ import { fetchAllPlanets } from "../services/planetService.js";
 
 const MEMORY_URL = "http://localhost:9001/Walle/api/planet/"
 
-function learnPlanets(root) {
+export function learnPlanets(root) {
   loadSectionView(
     root,
     sections.find((section) => section.title === "learnPlanets")

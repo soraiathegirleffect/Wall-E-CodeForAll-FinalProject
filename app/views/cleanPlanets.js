@@ -87,6 +87,9 @@ async function fetchPlanetsAndCreateCards(root) {
 }
 
 
+/////////////////////////////////////////////////////////////
+
+
 
 function createPlanetCards(planets, root) {
   const planetsList = document.createElement("ul");
@@ -103,11 +106,8 @@ function createPlanetCards(planets, root) {
     `;
 
     card.addEventListener('click', () => {
-      if (planet.diameter > 12000) {
-        alert("This planet is too big. It will take weeks to clean.");
-      } else {
-        alert("I'll clean this planet within this week.");
-      }
+      openFormModal(planet.name, planet.diameter, root);
+
     });
 
     planetsList.appendChild(card);
@@ -115,6 +115,104 @@ function createPlanetCards(planets, root) {
 
   root.appendChild(planetsList);
 }
+
+
+
+
+
+
+
+
+  //////////////////////////////////////// Create modal 
+
+
+  function openFormModal(planetName, planetDiameter, root) {
+    const modal = document.createElement('div');
+    modal.id = 'form-modal';
+    modal.className = 'modal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="cleaning-form">
+          <h2>Schedule Cleaning for <span id="planet-name"></span></h2>
+          <div class="form-group">
+            <label for="client-name">Client Name:</label>
+            <input type="text" id="client-name" name="client-name" required>
+          </div>
+          <div class="form-group">
+            <label for="space-contact">Space contact:</label>
+            <input type="text" id="space-contact" name="space-contact" required>
+          </div>
+          <div class="form-group">
+            <label for="cleaning-range">Cleaning Range:</label>
+            <select id="cleaning-range" name="cleaning-range" required>
+              <option value="light">Light</option>
+              <option value="medium">Medium</option>
+              <option value="deep">Deep</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cleaning-month">Cleaning Month:</label>
+            <select id="cleaning-month" name="cleaning-month" required>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit">Schedule Cleaning</button>
+          </div>
+        </form>
+      </div>
+    `;
+  
+    const planetNameSpan = modal.querySelector('#planet-name');
+    planetNameSpan.textContent = planetName;
+  
+    root.appendChild(modal);
+  
+    //modal.style.display = 'flex';
+  
+    const form = modal.querySelector('#cleaning-form');
+    form.dataset.diameter = planetDiameter;
+  
+    // Event listeners for closing the modal
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  
+    const closeBtn = modal.querySelector('.close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+    }
+  
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const diameter = form.dataset.diameter;
+      let message = `Form submitted for ${planetName}!`;
+      if (diameter > 12000) {
+        message += " This planet is too big. It will take weeks to clean.";
+      } else {
+        message += " I'll clean this planet within this week.";
+      }
+      alert(message);
+      modal.style.display = 'none';
+    });
+  }
+
 
 
 
