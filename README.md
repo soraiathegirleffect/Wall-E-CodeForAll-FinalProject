@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="https://31.media.tumblr.com/973b6392f37ac327102bafd43aff9b73/tumblr_mfangbvx201s0mr1eo1_500.gif" alt="BannerImage">
+  <img src="https://31.media.tumblr.com/973b6392f37ac327102bafd43aff9b73/tumblr_mfangbvx201s0mr1eo1_500.gif" alt="BannerImage" width="100%">
+</p>
 </p>
 <h1 align="center">:star:  Wall-E :star:  </h1>
 <h2 align="center">Exploring Planets with Wall-E: Teaching, Learning and cleaning Together</h2>
