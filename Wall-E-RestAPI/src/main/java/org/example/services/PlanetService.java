@@ -1,5 +1,6 @@
 package org.example.services;
 
+import org.example.model.CleaningScheduleRequest;
 import org.example.model.Planet;
 
 import java.util.List;
@@ -24,5 +25,9 @@ public interface PlanetService {
      */
     boolean savePlanet(Planet planet);
 
+
+    boolean saveSchedule(String planetName, CleaningScheduleRequest cleaningScheduleRequest);
+
+    List<CleaningScheduleRequest> getCleaningScheduleRequests(String planetName);
 
 }

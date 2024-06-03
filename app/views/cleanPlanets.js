@@ -2,7 +2,7 @@ export { cleanPlanets };
 
 import { sections } from "../main.js";
 import { goto } from "../main.js";
-const MEMORY_URL = "http://localhost:9001/Walle/api/planet/"
+const MEMORY_URL = "http://localhost:9001/Walle/api/planet"
 
 function cleanPlanets(root) {
   loadSectionView(
@@ -191,6 +191,45 @@ function createPlanetCards(planets, root) {
         modal.style.display = 'none';
       }
     });
+
+
+
+
+
+    //////////////////*****44568564456485656456456456456456465846545645645656456*****************//////
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const data = {
+          planetName: planetName, // Include the planet name
+          clientName: formData.get('client-name'),
+          spaceContact: formData.get('space-contact'),
+          cleaningRange: formData.get('cleaning-range'),
+          cleaningMonth: formData.get('cleaning-month')
+      };
+
+      try {
+          const response = await fetch(`${MEMORY_URL}/${planetName}/clean`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+          });
+
+          if (response.ok) {
+              alert('Cleaning schedule added successfully!');
+              modal.style.display = 'none';
+          } else {
+              alert('Failed to add cleaning schedule');//////
+          }
+      } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred while adding the cleaning schedule');
+      }
+  });
+  /////////////////////////////////////*************** */
   
     const closeBtn = modal.querySelector('.close');
     if (closeBtn) {
