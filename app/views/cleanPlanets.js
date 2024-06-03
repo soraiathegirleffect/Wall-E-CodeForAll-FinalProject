@@ -219,10 +219,10 @@ function createPlanetCards(planets, root) {
           });
 
           if (response.ok) {
-              alert('Cleaning schedule added successfully!');
+              alert('Cleaning schedule added successfully to my Wall-e Databaseeee!');
               modal.style.display = 'none';
           } else {
-              alert('Failed to add cleaning schedule');//////
+              alert('Failed to add cleaning schedule bi bi bi bi bo');//////
           }
       } catch (error) {
           console.error('Error:', error);
@@ -238,7 +238,7 @@ function createPlanetCards(planets, root) {
       });
     }
   
-    form.addEventListener('submit', (event) => {
+    /*form.addEventListener('submit', (event) => {
       event.preventDefault();
       const diameter = form.dataset.diameter;
       let message = `Form submitted for ${planetName}!`;
@@ -249,7 +249,7 @@ function createPlanetCards(planets, root) {
       }
       alert(message);
       modal.style.display = 'none';
-    });
+    });*/
   }
 
 
