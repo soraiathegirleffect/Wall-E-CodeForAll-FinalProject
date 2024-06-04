@@ -6,7 +6,7 @@
 <h2 align="center">Exploring Planets with Wall-E: Teaching, Learning and cleaning Together</h2>
 
 <h2>About me</h2>
-<P> Welcome to our web application, where curiosity meets exploration! I'm excited to share with you our journey alongside Wall-E, the lovable and curious robot, as we embark on a thrilling adventure through the cosmos.
+<P> Welcome to our web application, where curiosity meets exploration! We are excited to share with you our journey alongside Wall-E, the lovable and curious robot, as we embark on a thrilling adventure through the cosmos.
  </P>
 The Mission
 In this project, Wall-E and the User are exploring the mysteries of various planets. My goal is to teach Wall-E about the planets and, in turn, learn from him about new and uncharted worlds. Together, the goal is to uncover the secrets of the universe, one planet at a time.
