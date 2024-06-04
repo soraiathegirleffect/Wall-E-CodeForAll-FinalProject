@@ -1,10 +1,9 @@
-export { cleanPlanets };
-
 import { sections } from "../main.js";
 import { goto } from "../main.js";
+import {fetchPlanetsAndCreateCards} from "../services/planetService.js"
 const MEMORY_URL = "http://localhost:9001/Walle/api/planet"
 
-function cleanPlanets(root) {
+export function cleanPlanets(root) {
   loadSectionView(
     root,
     sections.find((section) => section.title === "cleanPlanets")
@@ -73,25 +72,15 @@ function loadSectionView(root, data) {
   fetchPlanetsAndCreateCards(root);
 }
 
-async function fetchPlanetsAndCreateCards(root) {
-  try {
-    const response = await fetch(MEMORY_URL);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch planets: ${response.statusText}`);
-    }
-    const planets = await response.json();
-    createPlanetCards(planets, root);
-  } catch (error) {
-    console.error('Error fetching planets:', error);
-  }
-}
+
+
 
 
 /////////////////////////////////////////////////////////////
 
 
 
-function createPlanetCards(planets, root) {
+export function createPlanetCards(planets, root) {
   const planetsList = document.createElement("ul");
   planetsList.classList.add("planets-list");
 
@@ -115,10 +104,6 @@ function createPlanetCards(planets, root) {
 
   root.appendChild(planetsList);
 }
-
-
-
-
 
 
 
@@ -193,10 +178,7 @@ function createPlanetCards(planets, root) {
     });
 
 
-
-
-
-    //////////////////*****44568564456485656456456456456456465846545645645656456*****************//////
+    //////////////////**********************//////
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -229,7 +211,7 @@ function createPlanetCards(planets, root) {
           alert('An error occurred while adding the cleaning schedule');
       }
   });
-  /////////////////////////////////////*************** */
+
   
     const closeBtn = modal.querySelector('.close');
     if (closeBtn) {
