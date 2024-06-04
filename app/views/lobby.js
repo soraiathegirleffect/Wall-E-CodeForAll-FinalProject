@@ -10,8 +10,8 @@ function lobby(root) {
 }
 
 function loadSectionView(root, data) {
-  const title = document.createElement("h1");
-  title.innerText = `${data.title} page`;
+  //const title = document.createElement("h1");
+  //title.innerText = `${data.title} page`;
 
   const centerCont = document.createElement("div");
   centerCont.classList.add("center-container");
@@ -58,7 +58,7 @@ function loadSectionView(root, data) {
   // event.preventDefault();
   // });
 
-  root.appendChild(title);
+  //root.appendChild(title);
   speechCont.appendChild(speech);
   centerCont.appendChild(speechCont);
   centerCont.appendChild(img);
