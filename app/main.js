@@ -17,7 +17,7 @@ const sections = [
     learnPlanetsBtn: "Learn about Planets",
     teachPlanetsBtn: "Teach about Planets",
     cleanPlanetsBtn: "Clean Planets",
-    text: "Hello I'm Wall-E, bi-po-bi, /n bibibibi i'm learning new earth information, select the topic:",
+    text: "Hello I'm Wall-E, bi-po-bi, /n bip I love to learn with Humans, select the topic:",
   },
   {
     title: "learnPlanets",
@@ -36,7 +36,7 @@ const sections = [
     walle: "wallECleaning",
     learnPlanetsBtn: "Learn about Planets",
     teachPlanetsBtn: "Teach about Planets",
-    text: "Do you want me to clean a Planet? Tell me which one: ",
+    text: "Do you want me to clean a Planet? Select one: ",
   },
 ];
 
