@@ -1,4 +1,4 @@
-
+import {createPlanetCards} from "../views/cleanPlanets.js"
 
 const API_PLANETS1 = "https://swapi.dev/api/planets/?page=1";
 
@@ -96,4 +96,19 @@ export async function planetData(name) {
     throw error; // Re-throw the error to be caught by the calling function
   }
 }
+
+
+export async function fetchPlanetsAndCreateCards(root) {
+  try {
+    const response = await fetch(MEMORY_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch planets: ${response.statusText}`);
+    }
+    const planets = await response.json();
+    createPlanetCards(planets, root);
+  } catch (error) {
+    console.error('Error fetching planets:', error);
+  }
+}
+
 
